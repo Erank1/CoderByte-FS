@@ -15,7 +15,7 @@ async function main(){
     await Book.insertMany([
         {bookName:'Lolita' , isbn:'1001' , author: vladimir._id},
         {bookName:'The Great Gatsby' , isbn:'1002' , author: scott._id},
-        {bookName:'In Search of Lost Time' , isbn:'1002' , author: marcel._id},
+        {bookName:'In Search of Lost Time' , isbn:'1003' , author: marcel._id},
     ]);
     await mongoose.disconnect();
 }

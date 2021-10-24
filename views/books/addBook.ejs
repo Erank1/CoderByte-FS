@@ -1,0 +1,37 @@
+<html>
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+<body>
+
+<% if (book.errors) {%>
+    <h2>Errors found in your submission!</h2>
+    <ul>
+        <% for(let er of Object.values(book.errors)) {%>
+        <li><%= er %></li>
+        <% }%>
+    </ul>
+<% } %>
+
+<div class="container">
+    <div class="content">
+        <form action="/books" method="post" class="form-signin">
+            <div class="form-group">
+                <label for="bookName">Books Name</label>
+                <input type="text" class="form-control" name="bookName" value="<%=book.bookName%>" placeholder="Enter Books Name">
+            </div>
+            <div class="form-group">
+                <label for="isbn">isbn</label>
+                <input type="text" class="form-control" name="isbn" value="<%=book.isbn%>" placeholder="Enter Books isbn">
+            </div>
+            <div class="form-group">
+                <label for="author">Author</label>
+                <input type="text" class="form-control" name="author" value="<%=book.author%>" placeholder="Enter Books's Author">
+            </div>
+
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+</div>
+</body>
+</html>

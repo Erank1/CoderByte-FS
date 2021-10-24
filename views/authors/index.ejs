@@ -5,14 +5,13 @@
 <body>
 
 <div class="container">
-    <a href="/addBook" class="btn btn-primary">To add a Book</a>
+    <a href="/addAuthor" class="btn btn-primary">To add an Author</a>
     <div class="content">
       <ul class="books list-group">
-          <% for (let book of books) { %>
+          <% for (let author of authors) { %>
           <li class="list-group-item">
-              <span class="bookName"> <%= book.bookName %> </span>
-              <span class="isbn"> <%= book.isbn %> </span>
-              <span class="author"> <%= book.author %> </span>
+              <span class="firstName"> <%= author.firstName %> </span>
+              <span class="lastName"> <%= author.lastName %> </span>
           </li>
           <% } %>
 

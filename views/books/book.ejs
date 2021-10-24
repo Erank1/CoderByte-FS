@@ -8,13 +8,11 @@
     <a href="/addBook" class="btn btn-primary">To add a Book</a>
     <div class="content">
       <ul class="books list-group">
-          <% for (let book of books) { %>
           <li class="list-group-item">
               <span class="bookName"> <%= book.bookName %> </span>
               <span class="isbn"> <%= book.isbn %> </span>
               <span class="author"> <%= book.author %> </span>
           </li>
-          <% } %>
 
       </ul>
     </div>

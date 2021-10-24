@@ -8,6 +8,8 @@ var sassMiddleware = require('node-sass-middleware');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var booksRouter = require('./routes/books');
+var authorsRouter = require('./routes/authors');
+
 
 const mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/myBooks');
@@ -34,6 +36,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/books', booksRouter);
+app.use('/authors', authorsRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

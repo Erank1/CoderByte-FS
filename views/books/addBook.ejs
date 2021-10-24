@@ -13,6 +13,7 @@
     </ul>
 <% } %>
 
+
 <div class="container">
     <div class="content">
         <form action="/books" method="post" class="form-signin">
@@ -26,10 +27,26 @@
             </div>
             <div class="form-group">
                 <label for="author">Author</label>
-                <input type="text" class="form-control" name="author" value="<%=book.author%>" placeholder="Enter Books's Author">
+                <input type="hidden" id="theAuthor" class="form-control" name="author" value="<%=book.author%>" placeholder="Enter Books's Author">
+
+                <select id="theAuthors" class="form-select" onchange="setAuthorHandler">
+                    <% for(let i = 0; i < authors.length; i++) { %>
+                        <option value='<%= authors[i] %>'><%= authors[i] %></option>
+                    <% } %>
+                </select>
+                <script>
+                    const setAuthorHandler = ()=>{
+                        const inp = document.querySelector(('#theAuthor'));
+                        const selected = document.querySelector(('#theAuthors'));
+                         inp.value = selected.value;
+                    }
+                </script>
+
+
+
             </div>
 
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-primary">Add Book</button>
         </form>
     </div>
 </div>

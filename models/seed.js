@@ -20,4 +20,4 @@ async function main(){
     await mongoose.disconnect();
 }
 
-main().then(r => r.on('connected', ()=>{console.log('Connection Completed!')})).catch(e => console.log(`Error!: ${e}`));
+main().then(r => r).catch(e => console.log(`Error!: ${e}`));

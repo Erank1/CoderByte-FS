@@ -13,7 +13,7 @@ router.get('/' ,async function(req,res,next){
   res.render('authors/index', {authors})
 });
 router.get('/:id' ,async function(req,res,next){
-  const author = await Author.find(req.query.id);
+  const author = await Author.findById(req.params.id);
   res.render('authors/author', {author})
 });
 
@@ -21,7 +21,7 @@ router.post('/', async function(req, res, next){
   const author = new Author(req.body);
   try{
     await author.save();
-    res.redirect('/authors/index')
+    res.redirect('/authors')
   } catch {
     res.render('authors/addAuthor', {author:author});
     //return next('error');

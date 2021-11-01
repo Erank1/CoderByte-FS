@@ -1,8 +1,5 @@
-<html>
-<head>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-</head>
-<body>
+<% include ../fragments/header.ejs %>
+
 
 <% if (book.errors) {%>
     <h2>Errors found in your submission!</h2>
@@ -25,30 +22,35 @@
                 <label for="isbn">isbn</label>
                 <input type="text" class="form-control" name="isbn" value="<%=book.isbn%>" placeholder="Enter Books isbn">
             </div>
+            <script>
+                const setAuthorHandler = ()=>{
+                    const inp = document.querySelector(('#theAuthor'));
+                    const selected = document.querySelector(('#theAuthors'));
+                    inp.value = selected.value;
+                    console.log(selected.value);
+                }
+            </script>
+
             <div class="form-group">
                 <label for="author">Author</label>
-                <input type="hidden" id="theAuthor" class="form-control" name="author" value="<%=book.author%>" placeholder="Enter Books's Author">
+                <input type="hidden" id="theAuthor" class="form-control" name="author" value="<%=book.author %>" placeholder="Enter Books's Author">
 
-                <select id="theAuthors" class="form-select" onchange="setAuthorHandler">
-                    <% for(let i = 0; i < authors.length; i++) { %>
-                        <option value='<%= authors[i] %>'><%= authors[i] %></option>
+                <select id="theAuthors" class="form-select" aria-label="Default select" onchange="setAuthorHandler()">
+                    <option selected="true" disabled="disabled">Choose Author Or Add One Before</option>
+
+                <% for(let i = 0; i < authors.length; i++) { %>
+                        <option value='<%= authors[i]._id %>'><%= authors[i].firstName + " " + authors[i].lastName %></option>
                     <% } %>
                 </select>
-                <script>
-                    const setAuthorHandler = ()=>{
-                        const inp = document.querySelector(('#theAuthor'));
-                        const selected = document.querySelector(('#theAuthors'));
-                         inp.value = selected.value;
-                    }
-                </script>
+
 
 
 
             </div>
 
-            <button type="submit" class="btn btn-primary">Add Book</button>
+            <button type="submit" value="Book" class="btn btn-primary">Add Book</button>
         </form>
     </div>
 </div>
-</body>
-</html>
+
+<% include ../fragments/footer.ejs %>

@@ -1,8 +1,4 @@
-<html>
-<head>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-</head>
-<body>
+<% include ../fragments/header.ejs %>
 
 <% if (author.errors) {%>
     <h2>Errors found in your submission!</h2>
@@ -18,21 +14,15 @@
         <form action="/authors" method="post" class="form-signin">
             <div class="form-group">
                 <label for="bookName">First Name</label>
-                <input type="text" class="form-control" name="firstName" value="<%=author.firstName%>" placeholder="Enter Books Name">
+                <input type="text" class="form-control" name="firstName" value="<%=author.firstName%>" placeholder="Enter Author First Name">
             </div>
             <div class="form-group">
                 <label for="isbn">Last Name</label>
-                <input type="text" class="form-control" name="lastName" value="<%=author.lastName%>" placeholder="Enter Books isbn">
-            </div>
-            <div class="form-group">
-                <label for="author">Author</label>
-                <input type="hidden" id="theAuthor" class="form-control" name="author" value="<%=book.author%>" placeholder="Enter Books's Author">
-
+                <input type="text" class="form-control" name="lastName" value="<%=author.lastName%>" placeholder="Enter Author Last Name">
             </div>
 
             <button type="submit" class="btn btn-primary">Add Author</button>
         </form>
     </div>
 </div>
-</body>
-</html>
+<% include ../fragments/footer.ejs %>

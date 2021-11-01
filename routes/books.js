@@ -12,18 +12,23 @@ router.get('/addBook',async function(req, res, next) {
 });
 
 router.get('/' ,async function(req,res,next){
-  const books = await Book.find({}).sort({_id: -1});
+  const books = await Book.find({}).sort({_id: -1}).populate("author");
   res.render('books/index', {books})
 });
 router.get('/:id' ,async function(req,res,next){
-  const book = await Book.find(req.query.id);
-  res.render('books/book', {book})
+  const book = await Book.findById(req.params.id).populate("author");
+ // const author = await Author.findById(book.author);
+  res.render('books/book', {book:book, author:book.author});
 });
 router.post('/', async function(req, res, next){
+  //const book = new Book(req.body);
+  const author = await Author.findById(req.body.author);
+  req.body.author = author;
   const book = new Book(req.body);
   try{
     await book.save();
-    res.redirect('/books/addBook')
+   res.redirect('/books');
+    //res.next('/');
   } catch {
     res.render('books/addBook', {book:book});
   }
